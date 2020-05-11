@@ -1,4 +1,4 @@
-package testnetty;
+package testservernetty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -7,26 +7,25 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * @Description: http形式：http://localhost:8899/
+ * @Description: 实现一个server对多个client 进行通信的情况
  * @Author duanliping
- * @Date 2020/5/10
+ * @Date 2020/5/11
  **/
-public class TestServer {
-
-    public static void main(String[] args) throws Exception{
+public class Myserver {
+    public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
         try{
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).
-                    childHandler(new TestServerInitializer());
+                    childHandler(new MyServerInitializer());
 
-            ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(8889).sync();
             channelFuture.channel().closeFuture().sync();
-        }finally{
+        }finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
+
         }
     }
 }

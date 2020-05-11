@@ -14,7 +14,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 public class TestServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         ChannelPipeline pipeline = socketChannel.pipeline();
-        pipeline.addLast("httpServerCodec", new HttpServerCodec()); //编解码
-        pipeline.addLast("testHttpServerHandler", new TestHttpServerHandler());
+        pipeline.addLast("httpServerCodec", new HttpServerCodec()); //编解码 netty提供的handler
+        pipeline.addLast("testHttpServerHandler", new TestHttpServerHandler()); //自己写的handler
     }
 }
