@@ -8,7 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
- * @Description: 查一下 为什么调不到channelRead0方法
+ * @Description: 查一下 为什么调不到channelRead0方法1
  * @Author duanliping
  * @Date 2020/5/11
  **/
